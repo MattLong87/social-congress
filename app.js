@@ -1,30 +1,30 @@
 "use strict";
+var API_KEY = "AIzaSyCEs-mEAnBuW5ORtH8UuhgUiVZKpMLZCFU";
 
 //Single state object
 var state = {
 	locationAvailable: false,
 	userLatitude: 0,
 	userLongitude: 0,
+	userAddress: "",
 	twitterHandles: []
 };
-
 
 
 //Event listener for "Use my location" button click
 $(".js-use-my-location").click(function(e){
 	e.preventDefault();
 	getUserLocation(state, function(){
-		displayState(state);
+		getUserAddress(state);
 	});
 });
 
 //Event listener for enter key on address form
 $(".js-address").keydown(function(e){
 	if (e.keyCode == 13){
-		getTwitterHandles(state, $(this).val());
+		getTwitterHandles(state, $(this).val(), displayTimelines);
 	}
 });
-
 
 
 //State modification functions
@@ -42,10 +42,21 @@ function getUserLocation(state, callback){
 	}
 };
 
-function getTwitterHandles(state, address){
+function getUserAddress(state){
+	var url = "https://maps.googleapis.com/maps/api/geocode/json?";
+	var settings = {
+		latlng: state.userLatitude + "," + state.userLongitude,
+		key: API_KEY
+		};
+	$.getJSON(url, settings, function(data){
+		state.userAddress = data.results[0].formatted_address;
+		getTwitterHandles(state, state.userAddress, displayTimelines)
+	})
+};
+
+function getTwitterHandles(state, address, callback){
 	state.twitterHandles = [];
 	var url = "https://www.googleapis.com/civicinfo/v2/representatives/?roles=legislatorLowerBody&roles=legislatorUpperBody";
-	var API_KEY = "AIzaSyCEs-mEAnBuW5ORtH8UuhgUiVZKpMLZCFU";
 	var settings = {
 		key: API_KEY,
 		address: address,
@@ -59,7 +70,7 @@ function getTwitterHandles(state, address){
 				}
 			})
 		})
-		displayTimelines(state);
+		callback(state);
 	})
 };
 
@@ -73,14 +84,5 @@ function displayTimelines(state){
 		$(".results").append("<div class = 'twitter-embed'>" + html1 + handle + html2 + handle + html3 + "</div>");
 	})
 }
-
-
-
-
-
-function displayState(state){
-	console.log(state);
-}
-
 
 //Sample JSON URL: https://www.googleapis.com/civicinfo/v2/representatives/?key=AIzaSyCEs-mEAnBuW5ORtH8UuhgUiVZKpMLZCFU&address=27605&roles=legislatorLowerBody&roles=legislatorUpperBody
