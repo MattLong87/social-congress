@@ -9,5 +9,26 @@ body{
 .twitter-embed{
 	width: 360px;
 	height: 600px;
-	display: inline-block;
+	display: block;
+	margin: 0 auto;
+}
+
+@media only screen and (min-width: 800px){
+	.twitter-embed{
+		display: inline-block;
+	}
+}
+
+h1{
+	font-family: 'Rokkitt', serif;
+	font-size: 6em;
+	color: #FFFFFF;
+}
+
+header{
+	background: rgba(5,0,148,1);
+	background: linear-gradient(135deg, rgba(5,0,148,1) 0%, rgba(168,21,2,1) 100%);
+	clip-path: polygon(7% 0%, 100% 0%, 93% 100%, 0% 100%);
+	user-select: none;
+	cursor: default;
 }
