@@ -3,6 +3,11 @@
 }
 
 body{
-	width: 90%;
 	text-align: center;
+}
+
+.twitter-embed{
+	width: 360px;
+	height: 600px;
+	display: inline-block;
 }

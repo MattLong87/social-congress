@@ -65,11 +65,12 @@ function getTwitterHandles(state, address){
 
 
 function displayTimelines(state){
+	$(".results").html("");
 	var html1 = '<a class="twitter-timeline" href="https://twitter.com/';
-	var html2 = '">Tweets by ';
+	var html2 = '" data-width = "360" data-height = "600">Tweets by ';
 	var html3 = '</a> <script async src="http://platform.twitter.com/widgets.js" charset="utf-8"></script>';
 	state.twitterHandles.map(function(handle){
-		$(".results").append(html1 + handle + html2 + handle + html3);
+		$(".results").append("<div class = 'twitter-embed'>" + html1 + handle + html2 + handle + html3 + "</div>");
 	})
 }
 
