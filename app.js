@@ -68,7 +68,7 @@ function displayTimelines(state){
 	$(".results").html("");
 	var html1 = '<a class="twitter-timeline" href="https://twitter.com/';
 	var html2 = '" data-width = "360" data-height = "600">Tweets by ';
-	var html3 = '</a> <script async src="http://platform.twitter.com/widgets.js" charset="utf-8"></script>';
+	var html3 = '</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>';
 	state.twitterHandles.map(function(handle){
 		$(".results").append("<div class = 'twitter-embed'>" + html1 + handle + html2 + handle + html3 + "</div>");
 	})
