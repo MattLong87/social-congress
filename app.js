@@ -28,6 +28,7 @@ $(".js-address").keydown(function(e){
 
 
 //State modification functions
+//sets state.userLatitude and state.userLongitude, then passes state to given callback function
 function getUserLocation(state, callback){
 	if ("geolocation" in navigator){
 		state.locationAvailable = true;
@@ -42,6 +43,7 @@ function getUserLocation(state, callback){
 	}
 };
 
+//sets state.userAddress to string using reverse geocoding with given latitude and longitude
 function getUserAddress(state){
 	var url = "https://maps.googleapis.com/maps/api/geocode/json?";
 	var settings = {
@@ -54,6 +56,7 @@ function getUserAddress(state){
 	})
 };
 
+//sets state.twitterHandles to an array of legislators' twitter handles
 function getTwitterHandles(state, address, callback){
 	state.twitterHandles = [];
 	var url = "https://www.googleapis.com/civicinfo/v2/representatives/?roles=legislatorLowerBody&roles=legislatorUpperBody";
@@ -74,7 +77,7 @@ function getTwitterHandles(state, address, callback){
 	})
 };
 
-
+//populates .results section with twitter timelines
 function displayTimelines(state){
 	$(".results").html("");
 	var html1 = '<a class="twitter-timeline" href="https://twitter.com/';
