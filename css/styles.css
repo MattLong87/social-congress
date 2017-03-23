@@ -8,7 +8,6 @@ body{
 
 .twitter-embed{
 	width: 360px;
-	height: 600px;
 	display: block;
 	margin: 0 auto;
 }
@@ -81,6 +80,31 @@ input{
 
 input:focus{
 	outline:0;
+}
+
+.twitter-embed{
+	border: 0px solid black;
+}
+
+.party{
+	display:block;
+	color: white;
+	font-family: 'Raleway', sans-serif;
+	padding-top: 4px;
+	padding-bottom: 4px;
+}
+
+.Democratic{
+	background-color: #0140A6;
+}
+
+.Republican{
+	background-color: #B70505;
+}
+
+.name{
+	font-size: 1.9em;
+	font-family: 'Rokkitt', serif;
 }
 
 @media only screen and (min-width: 800px){
