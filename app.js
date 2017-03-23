@@ -7,10 +7,8 @@ var state = {
 	userLatitude: 0,
 	userLongitude: 0,
 	userAddress: "",
-	twitterHandles: [],
 	legislators: []
 };
-
 
 //Event listener for "Use my location" button click
 $(".js-use-my-location").click(function(e){
@@ -21,6 +19,7 @@ $(".js-use-my-location").click(function(e){
 //Event listener for enter key on address form
 $(".js-address").keydown(function(e){
 	if (e.keyCode == 13){
+		$(".location-error").slideUp();
 		getLegislators(state, $(this).val(), displayLegislators);
 	}
 });
@@ -35,6 +34,9 @@ function getUserLocation(state, callback){
 			state.userLatitude = position.coords.latitude;
 			state.userLongitude = position.coords.longitude;
 			callback(state);
+		},
+		function(error){
+			$(".location-error").slideDown();
 		});
 	}
 	else{
@@ -44,6 +46,7 @@ function getUserLocation(state, callback){
 
 //sets state.userAddress to string using reverse geocoding with given latitude and longitude
 function getUserAddress(state){
+	$(".results").html("Loading");
 	var url = "https://maps.googleapis.com/maps/api/geocode/json?";
 	var settings = {
 		latlng: state.userLatitude + "," + state.userLongitude,
@@ -51,35 +54,15 @@ function getUserAddress(state){
 		};
 	$.getJSON(url, settings, function(data){
 		state.userAddress = data.results[0].formatted_address;
+		$(".js-address").val(state.userAddress);
 		getLegislators(state, state.userAddress, displayLegislators);
 	})
 };
 
-//sets state.twitterHandles to an array of legislators' twitter handles
-// function getTwitterHandles(state, address, callback){
-// 	state.twitterHandles = [];
-// 	var url = "https://www.googleapis.com/civicinfo/v2/representatives/?roles=legislatorLowerBody&roles=legislatorUpperBody";
-// 	var settings = {
-// 		key: API_KEY,
-// 		address: address,
-// 		levels: "country",
-// 		};
-// 	$.getJSON(url, settings, function(data){
-// 		data.officials.map(function(official){
-// 			official.channels.filter(function(channel){
-// 				if (channel.type == "Twitter"){
-// 					state.twitterHandles.push(channel.id);
-// 				}
-// 			})
-// 		})
-// 		callback(state);
-// 	});
-// };
-
 //populates state.legislators with an array of legislator objects
 function getLegislators(state, address, callback){
 	state.legislators = [];
-	var url = "https://www.googleapis.com/civicinfo/v2/representatives/?roles=legislatorLowerBody&roles=legislatorUpperBody";
+	var url = "https://www.googleapis.com/civicinfo/v2/representatives/?roles=legislatorLowerBody&roles=legislatorUpperBody";	
 	var settings = {
 		key: API_KEY,
 		address: address,
@@ -93,21 +76,10 @@ function getLegislators(state, address, callback){
 	});
 };
 	
-
-//populates .results section with twitter timelines
-// function displayTimelines(state){
-// 	$(".results").html("");
-// 	var html1 = '<a class="twitter-timeline" href="https://twitter.com/';
-// 	var html2 = '" data-width = "360" data-height = "600">Tweets by ';
-// 	var html3 = '</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>';
-// 	state.twitterHandles.map(function(handle){
-// 		$(".results").append("<div class = 'twitter-embed'>" + html1 + handle + html2 + handle + html3 + "</div>");
-// 	})
-// }
-
 // populates .results section with name, party, and timeline
 function displayLegislators(state){
 	$(".results").html("");
+
 	var html1 = '<a class="twitter-timeline" href="https://twitter.com/';
 	var html2 = '" data-width = "360" data-height = "600">Tweets by ';
 	var html3 = '</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>';
@@ -119,8 +91,9 @@ function displayLegislators(state){
 				twitterHandle = channel.id;
 			}
 		});
+		var party = legislator.party == "Democratic" ? "DEMOCRAT" : legislator.party.toUpperCase();
 		$(".results").append(
-			"<div class = 'twitter-embed'><span class = 'party " + legislator.party + "'>" + legislator.party.toUpperCase() + "</span><span class = 'name'>" + legislator.name + "</span>" + html1 + twitterHandle + html2 + twitterHandle + html3 + "</div>"
+			"<div class = 'twitter-embed'><span class = 'party " + legislator.party + "'>" + party + "</span><span class = 'name'>" + legislator.name + "</span>" + html1 + twitterHandle + html2 + twitterHandle + html3 + "</div>"
 			);
 	});
 };

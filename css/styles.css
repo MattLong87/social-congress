@@ -2,21 +2,30 @@
 	box-sizing: border-box;
 }
 
+html, body{
+	height: 100%;
+	width: 100%;
+}
+
 body{
 	text-align: center;
 }
 
 .twitter-embed{
-	width: 360px;
+	width: 90%;
 	display: block;
 	margin: 0 auto;
 }
 
 h1{
 	font-family: 'Rokkitt', serif;
-	font-size: 6em;
+	font-size: 5em;
 	color: #FFFFFF;
 	margin: 0;
+}
+
+.small-only{
+	display:block;
 }
 
 h2{
@@ -33,8 +42,8 @@ header{
 	background: linear-gradient(135deg, rgba(5,0,148,1) 0%, rgba(168,21,2,1) 100%);
 	user-select: none;
 	cursor: default;
-	margin-top: 60px;
-	margin-bottom: 30px;
+	margin-bottom: 50px;
+	padding: 50px;
 }
 
 button{
@@ -48,6 +57,24 @@ button{
 	user-select: none;
 	margin: 0 auto;
 	margin-bottom: 15px;
+	position: relative;
+	padding: 0 80px;
+}
+
+.location-error{
+	display: none;
+	background-color: #ce4a4a;
+	color: #FFFFFF;
+	padding: 10px 0;
+	margin-bottom: 10px;
+
+}
+
+i{
+	position: absolute;
+	top: 50%;
+	left: 50px;
+	transform: translateY(-50%);
 }
 
 button:hover{
@@ -68,7 +95,7 @@ input{
 	display: block;
 	margin: 0 auto;
 	margin-top: 15px;
-	margin-bottom: 30px;
+	margin-bottom: 50px;
 	background-color: white;
 	border: 4px solid black;
 	border-radius: 50px;
@@ -82,9 +109,6 @@ input:focus{
 	outline:0;
 }
 
-.twitter-embed{
-	border: 0px solid black;
-}
 
 .party{
 	display:block;
@@ -92,6 +116,7 @@ input:focus{
 	font-family: 'Raleway', sans-serif;
 	padding-top: 4px;
 	padding-bottom: 4px;
+	background-color: #000000;
 }
 
 .Democratic{
@@ -103,16 +128,25 @@ input:focus{
 }
 
 .name{
-	font-size: 1.9em;
+	font-size: 2em;
 	font-family: 'Rokkitt', serif;
 }
 
-@media only screen and (min-width: 800px){
+@media only screen and (min-width: 600px){
+	h1{
+		font-size: 6em;
+	}
 	.twitter-embed{
+		width: 360px;
 		display: inline-block;
+		margin: 0 auto;
 	}
 
 	input{
 		width: 550px;
+	}
+
+	.small-only{
+		display:none;
 	}
 }
