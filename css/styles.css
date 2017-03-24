@@ -116,6 +116,7 @@ input:focus{
 	font-family: 'Raleway', sans-serif;
 	padding-top: 4px;
 	padding-bottom: 4px;
+	margin-bottom: 4px;
 	background-color: #000000;
 }
 
@@ -125,6 +126,11 @@ input:focus{
 
 .Republican{
 	background-color: #B70505;
+}
+
+.chamber{
+	display: block;
+	font-family: 'Raleway', sans-serif;
 }
 
 .name{
