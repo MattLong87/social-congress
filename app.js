@@ -62,23 +62,32 @@ function getUserAddress(state){
 //populates state.legislators with an array of legislator objects
 function getLegislators(state, address, callback){
 	state.legislators = [];
-	var url = "https://www.googleapis.com/civicinfo/v2/representatives/?roles=legislatorLowerBody&roles=legislatorUpperBody";	
-	var settings = {
-		key: API_KEY,
+	var url = "https://www.googleapis.com/civicinfo/v2/representatives/?roles=legislatorLowerBody&roles=legislatorUpperBody";
+	var data = {
 		address: address,
-		levels: "country",
+		key: API_KEY,
+		levels: "country"
+	}
+	var settings = {
+		dataType: "json",
+		data: data,
+		success: function(data){
+				data.officials.map(function(official){
+				state.legislators.push(official);
+				})
+				callback(state);
+		},
+		error: function(){
+			$(".results").html("");
+			$(".results-error").slideDown()}
 	};
-	$.getJSON(url, settings, function(data){
-		data.officials.map(function(official){
-			state.legislators.push(official);
-		})
-	callback(state);
-	});
+	$.ajax(url, settings);
 };
 	
 // populates .results section with name, party, and timeline
 function displayLegislators(state){
 	$(".results").html("");
+	$(".results-error").slideUp();
 
 	var html1 = '<a class="twitter-timeline" href="https://twitter.com/';
 	var html2 = '" data-width = "360" data-height = "600">Tweets by ';

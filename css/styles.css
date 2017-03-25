@@ -21,6 +21,7 @@ body{
 h1{
 	font-family: 'Rokkitt', serif;
 	font-size: 5em;
+	font-weight: 400;
 	color: #FFFFFF;
 	margin: 0;
 }
@@ -62,13 +63,30 @@ button{
 	padding: 0 80px;
 }
 
-.location-error{
+.error{
 	display: none;
 	background-color: #ce4a4a;
 	color: #FFFFFF;
 	padding: 10px 0;
 	margin-bottom: 10px;
+}
 
+.error-1{
+	font-size: 1.7em;
+	margin-bottom: 20px;
+}
+
+.error-2{
+	font-size: 1.2em;
+	margin-bottom: 10px;
+}
+
+.error-3{
+	font-size: .8em;
+}
+
+.emphasized{
+	font-weight: bold;
 }
 
 i{
