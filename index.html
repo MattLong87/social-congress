@@ -7,29 +7,31 @@
 	<link rel="stylesheet" type="text/css" href="css/styles.css">
 
 	<link href="https://fonts.googleapis.com/css?family=Rokkitt" rel="stylesheet">
-	<link href="https://fonts.googleapis.com/css?family=Roboto:100i" rel="stylesheet">
-	<link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Lato:400" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Lato:300" rel="stylesheet">
 
 	<meta name = "viewport" content = "width = device-width">
+	<meta name = "description" content = "Check in on the Twitter timelines of your Senators and Representative">
 </head>
 <body>
 
 <header>
-	<h1>Social<br class = "small-only">Congress</h1>
-	<h2>Check in on your legislators!</h2>
+			<h1>Social<br class = "small-only">Congress</h1>
+			<div class = "feature-box"><span class = "verb">check in</span> on your congresspeople</div>
+			<div class = "feature-box"><span class = "verb">compare</span> how they're reacting to today's news</div>
+			<div class = "feature-box"><span class = "verb">engage</span> with them easily on Twitter</div>
+			<a href = "#app"><button class = "try-it">TRY IT</button></a>
 </header>
-<main>
-
+<main><a name = "app"></a>
 	<section class = "userinput">
-		<button class = "js-use-my-location"><i class="fa fa-location-arrow" aria-hidden="true"></i> Use my location</button>
+		<button class = "js-use-my-location location-button"><i class="fa fa-location-arrow" aria-hidden="true"></i> Use my location</button>
 		<div class = "error location-error">Location not available. Please enter address</div>
-		<span class = "or">OR<span>
+		<div class = "or">OR</div>
 		<input type = "text" class = "js-address" placeholder="Enter Street Address">
 	</section>
 	<div class = "error results-error"><div class = "error-1">Something went wrong.</div><div class = "error-2">Please try again, or use a different address.</div><div class = "error-3"><span class = "emphasized">Hint:</span> Social Congress only works for addresses in the U.S.</div></div>
 	<section class = "results">
 	</section>
-
 </main>
 <footer>
 	<h6>Designed and developed by Matthew Long. Congressional data from <a href="https://developers.google.com/civic-information/">Google Civic Information API</a>.</h6>

@@ -84,7 +84,7 @@ function getLegislators(state, address, callback){
 	$.ajax(url, settings);
 };
 	
-// populates .results section with name, party, and timeline
+// populates .results section with name, party, timeline, and tweet button
 function displayLegislators(state){
 	$(".results").html("");
 	$(".results-error").slideUp();
@@ -102,8 +102,9 @@ function displayLegislators(state){
 		});
 		var party = legislator.party == "Democratic" ? "DEMOCRAT" : legislator.party.toUpperCase();
 		var chamber = legislator.urls[0].includes("senate") ? "Senator" : "Representative";
+		var tweetButton = "<a href='https://twitter.com/intent/tweet?text=@" + twitterHandle + "'><button class = 'tweet-button'><i class='fa fa-share' aria-hidden='true'></i> Tweet @"+ twitterHandle +"</button></a>"
 		$(".results").append(
-			"<div class = 'twitter-embed'><span class = 'party " + legislator.party + "'>" + party + "</span><span class = 'chamber'>" + chamber + "</span><span class = 'name'>" + legislator.name + "</span>" + html1 + twitterHandle + html2 + twitterHandle + html3 + "</div>"
+			"<div class = 'twitter-embed'><span class = 'party " + legislator.party + "'>" + party + "</span><span class = 'chamber'>" + chamber + "</span><span class = 'name'>" + legislator.name + "</span>" + html1 + twitterHandle + html2 + twitterHandle + html3 + tweetButton + "</div>"
 			);
 	});
 };
