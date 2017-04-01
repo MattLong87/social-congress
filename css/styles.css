@@ -10,13 +10,14 @@ html, body{
 body{
 	text-align: center;
 	background-color: #333333;
+	background-image: url("../images/capitol-building-darker.png");
+	background-size: cover;	
+	background-position: center;
+	background-attachment: fixed;
 }
 
 header{
 	height: 100vh;
-	background-image: url("../images/capitol-building-darker.png");
-	background-size: cover;	
-	background-position: center;
 	line-height: .8;
 	padding-top: 30px;
 }
@@ -68,17 +69,16 @@ h1{
 }
 
 main{
-	min-height: 90vh;
+	min-height: 85vh;
 }
 
 footer{
-	min-height: 10vh;
+	padding-bottom: 15px;
 }
 
 .userinput{
 	padding-top: 20px;
 }
-
 
 .location-button{
 	background-color: white;
@@ -141,6 +141,9 @@ button:focus{
 	display:block;
 	margin: 0 auto;
 	color: white;
+	font-size: 2em;
+	font-family: 'Lato', serif;
+	font-weight: 300;
 }
 
 input{
@@ -213,22 +216,88 @@ input:focus{
 h6{
 	margin: 0;
 	padding: 0;
+	color: white;
+	font-family: 'Lato', serif;
+	font-weight: 300;
+	font-size: 1em;
+}
+
+footer a{
+	color: white;
+}
+
+footer a:active{
+	color: white;
+}
+
+footer a:visited{
+	color:white;
+}
+
+.big-only{
+	display:none;
 }
 
 
 
-@media only screen and (min-width: 600px){
-	h1{
-		font-size: 6em;
+@media only screen and (min-width: 800px){
+	.big-only{
+		display:inline-block;
 	}
+
+	header{
+		padding-top: 15vh;
+	}
+
+	h1{
+		font-size: 11vw;
+	}
+
+	.feature-box{
+		width: 250px;
+		display: inline-block;
+		margin-left:10px;
+		margin-right:10px;
+		background-color: rgba(0, 0, 0, 0.5);
+		border: 5px solid white;
+		font-size: 1.6em;
+		line-height: 1.1;
+	}
+
+	.boxes-container{
+		margin: 15vh 0;
+	}
+
 	.twitter-embed{
 		width: 360px;
 		display: inline-block;
 		margin: 0 auto;
 	}
 
+	.try-it{
+		width: 360px;
+		height: 5vh;
+		font-size: 2.5em;
+	}
+
+	.feature-box i{
+		border-radius: 50%;
+		border: 3px solid white;
+		font-size: 50pt;
+		padding: 15px;
+		margin-bottom: 15px;
+	}
+
+	.userinput{
+		padding-top: 3vh;
+	}
+
 	input{
 		width: 550px;
+	}
+
+	h6{
+		font-size: 1.2em;
 	}
 
 	.small-only{
