@@ -260,6 +260,8 @@ footer a:visited{
 		margin-right:10px;
 		background-color: rgba(0, 0, 0, 0.5);
 		border: 5px solid white;
+		border-left: none;
+		border-right: none;
 		font-size: 1.6em;
 		line-height: 1.1;
 	}
@@ -278,6 +280,11 @@ footer a:visited{
 		width: 360px;
 		height: 5vh;
 		font-size: 2.5em;
+	}
+
+	.try-it:hover{
+		transition: background-color .25s;
+		background-color: #1e50ea
 	}
 
 	.feature-box i{
