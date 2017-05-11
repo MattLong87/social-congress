@@ -14,6 +14,7 @@ body{
 	background-size: cover;	
 	background-position: center;
 	background-attachment: fixed;
+	border-top: solid 15px #B70505
 }
 
 header{
@@ -34,6 +35,7 @@ h1{
 .feature-box{
 	padding: 30px 10px;
 	border: 1px white solid;
+	background-color: rgba(0, 0, 0, 0.5);
 	color: #FFFFFF;
 	margin: 0;
 	margin-bottom: 5px;
@@ -240,7 +242,7 @@ footer a:visited{
 
 
 
-@media only screen and (min-width: 800px){
+@media only screen and (min-width: 820px){
 	.big-only{
 		display:inline-block;
 	}
