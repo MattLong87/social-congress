@@ -46,7 +46,7 @@ function getUserLocation(state, callback){
 
 //sets state.userAddress to string using reverse geocoding with given latitude and longitude
 function getUserAddress(state){
-	$(".results").html("Loading");
+	$(".results").html("Loading...");
 	var url = "https://maps.googleapis.com/maps/api/geocode/json?";
 	var settings = {
 		latlng: state.userLatitude + "," + state.userLongitude,

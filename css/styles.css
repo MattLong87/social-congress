@@ -168,6 +168,10 @@ input:focus{
 	outline:0;
 }
 
+.results{
+	color: #fff;
+}
+
 .twitter-embed{
 	width: 90%;
 	display: block;
