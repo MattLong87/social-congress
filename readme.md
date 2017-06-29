@@ -1,7 +1,6 @@
 # Social Congress
 
-<img src="http://i.imgur.com/5BJGcZJ.png">
-<img src="http://i.imgur.com/jBlHM3q.png">
+<img src="http://i.imgur.com/YN16ntF.png">
 
 ## Introduction
 Social Congress provides a handy dashboard for checking out the Twitter feeds of your congresspeople. Using your browser's geolocation or a provided address, it accesses the Google Civic Information API and displays the Twitter timelines and buttons to easily send @-replies.
