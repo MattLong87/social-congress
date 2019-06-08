@@ -206,6 +206,10 @@ input:focus{
 	font-weight: 400;
 }
 
+.twitter-embed{
+	color: black;
+}
+
 .name{
 	font-size: 2em;
 	font-family: 'Rokkitt', serif;
